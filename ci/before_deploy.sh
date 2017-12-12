@@ -40,6 +40,9 @@ release_tag() {
             ;;
     esac
 
+    git config --global user.email "travis@travis-ci.org"
+    git config --global user.name "Travis CI"
+
     git add --force bin/$CRATE_NAME
     git commit --message "Add binary for $TRAVIS_TAG-$TARGET."
     tagname="binary-$TRAVIS_TAG-$TARGET"
