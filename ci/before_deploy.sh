@@ -44,7 +44,7 @@ release_tag() {
     git commit --message "Add binary for $TRAVIS_TAG-$TARGET."
     tagname="binary-$TRAVIS_TAG-$TARGET"
     git tag --force "$tagname"
-    git push --force origin "$tagname"
+    git push --force https://${GITHUB_TOKEN}@github.com/autozimu/LanguageClient-neovim.git "$tagname"
 }
 
 TARGETS=(${TARGETS//:/ })
