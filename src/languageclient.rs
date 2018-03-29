@@ -708,7 +708,10 @@ pub trait ILanguageClient: IVim {
         let hover: Option<Hover> = serde_json::from_value(result.clone())?;
         if let Some(hover) = hover {
             if hover.lines_len() <= 1 {
-                self.echo(hover.to_string())?;
+                let s = hover.to_string();
+                if !s.is_empty() {
+                    self.echo(s)?;
+                }
             } else {
                 self.preview(&hover.to_display())?;
             }
